@@ -4,6 +4,10 @@ import { IEmscriptenReadFileOptions } from "./IEmscriptenReadFileOptions";
 export interface IEmscriptenModule {
 	HEAP8: Int8Array;
 	HEAPU8: Uint8Array;
+	HEAP16: Int16Array;
+	HEAPU16: Uint16Array;
+	HEAP32: Int32Array;
+	HEAPU32: Uint32Array;
 
 	arguments?: string[];
 	print?(what: string): void;
@@ -38,4 +42,5 @@ export interface IEmscriptenModule {
 	FS_unlink?(path: string): void;
 
 	_malloc(length: number): number;
+	_free(length: number): number;
 }

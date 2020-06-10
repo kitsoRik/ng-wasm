@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <map>
 #include <stack>
@@ -42,12 +41,12 @@ public:
 		std::stack<double> st;
 		if (!areParenthesesGood(str))
 		{
-			std::cout << "Input error!";
+			// std::cout << "Input error!";
 			return EXIT_FAILURE;
 		}
 		else if (!isGoodCharacters(str))
 		{
-			std::cout << "Input error!";
+			// std::cout << "Input error!";
 			return EXIT_FAILURE;
 		}
 		replaceStringtoNumb(str);
@@ -226,13 +225,4 @@ extern "C"
 
 		return param.Calculate();
 	}
-
-	EMSCRIPTEN_KEEPALIVE
-	uint8_t *test(uint8_t *data)
-	{
-		return data;
-	}
 }
-
-// C:\em\emsdk\upstream\emscripten\em++ -Os src\app\services\crypto\crypto-wasm.cpp -o src/assets/wasm/mywasm.js -s EXTRA_EXPORTED_RUNTIME_METHODS="['ccall']" -s MODULARIZE=1 -s EXPORT_NAME="MywasmModule"
-// C:\em\emsdk\upstream\emscripten\em++ -Os src\app\pages\calculator\source\calculator.cpp -o src/assets/wasm/calculator.js -s EXTRA_EXPORTED_RUNTIME_METHODS="['ccall']" -s MODULARIZE=1 -s EXPORT_NAME="CalculatorModule"

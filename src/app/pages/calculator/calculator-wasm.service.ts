@@ -10,17 +10,6 @@ export class CalculatorWasmService extends NgWasmService {
 	}
 
 	evaluate(expression: string): number {
-		console.log(
-			this.readUint8Array(
-				this.module.ccall(
-					"test",
-					"uint8_t*",
-					["uint8_t"],
-					[this.writeUint8Array(new Uint8Array([1, 2, 3]))]
-				),
-				3
-			)
-		);
 		try {
 			return this.module.ccall(
 				"evaluate",
@@ -30,8 +19,7 @@ export class CalculatorWasmService extends NgWasmService {
 			);
 		} catch (e) {
 			alert("Error");
-			console.log(e);
-			return 228;
+			throw `Pointer in runtime_error: ${e}`;
 		}
 	}
 }
