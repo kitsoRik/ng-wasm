@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:wasm:calculator": "emcc ./sources/calculator/calculator.cpp -o ./src/assets/wasm/calculator.js -O3 -s WASM=1 -s NO_EXIT_RUNTIME=1  -s \"EXTRA_EXPORTED_RUNTIME_METHODS=['ccall']\" -s MODULARIZE=1 -s EXPORT_NAME=\"CalculatorModule\"",
+    "build:wasm:objects": "emcc --bind ./sources/objects/objects.cpp -o ./src/assets/wasm/objects.js -O3 -s WASM=1 -s NO_EXIT_RUNTIME=1  -s \"EXTRA_EXPORTED_RUNTIME_METHODS=['ccall']\" -s MODULARIZE=1 -s EXPORT_NAME=\"ObjectsModule\""
   },
   "private": true,
   "dependencies": {

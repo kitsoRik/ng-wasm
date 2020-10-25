@@ -42,5 +42,5 @@ export interface IEmscriptenModule {
 	FS_unlink?(path: string): void;
 
 	_malloc(length: number): number;
-	_free(length: number): number;
+  _free(length: number): number;
 }

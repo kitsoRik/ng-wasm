@@ -1,10 +1,10 @@
 import { loadScript } from "../tools/load";
 import { IEmscriptenModule } from "../models/IEmscriptenModule";
 
-export abstract class NgWasmService {
-	private _module: IEmscriptenModule;
+export abstract class NgWasmService<T = Object> {
+	private _module: IEmscriptenModule & T;
 
-	get module(): IEmscriptenModule {
+	get module(): IEmscriptenModule & T{
 		return this._module;
 	}
 
@@ -22,7 +22,7 @@ export abstract class NgWasmService {
 			this.moduleExportName,
 			`/assets/wasm/${this.wasmJavaScriptLoader}`
 		);
-		this._module = <IEmscriptenModule>{
+		this._module = <IEmscriptenModule & T>{
 			locateFile: (file: string) => {
 				return `/assets/wasm/${file}`;
 			},
